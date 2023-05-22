@@ -1,0 +1,11 @@
+{
+  "files": ["src/scripts/main.ts"],
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "outDir": "dist",
+    "target": "ES2020",
+    "module": "CommonJS"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
