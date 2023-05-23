@@ -216,3 +216,12 @@ a
 @import 'schedule'
 @import 'module'
 @import 'videoblock'
+
+.fromDown
+	animation: fromDown .4s linear
+
+@keyframes fromDown
+	from
+		transform: translateY(400px)
+	to
+		transform: translateY(0)
