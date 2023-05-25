@@ -4,6 +4,43 @@
     height: 100vh
     padding-top: 100px
     overflow: hidden
+    .slick-prev
+        z-index: 12
+        position: absolute
+        bottom: 200px
+        left: 187px
+        width: 43px
+        height: 43px
+        border: 2px solid #EAEAEA
+        border-radius: 100%
+        background-color: transparent
+        cursor: pointer
+        margin-right: 12px
+        svg
+            position: absolute
+            width: 12px
+            height: 12px
+            top: 50%
+            left: 50%
+            transform: translateX(-65%) translateY(-50%)
+    .slick-next
+        z-index: 12
+        position: absolute
+        bottom: 200px
+        left: 247px
+        width: 43px
+        height: 43px
+        border: 2px solid #EAEAEA
+        border-radius: 100%
+        background-color: transparent
+        cursor: pointer
+        svg
+            position: absolute
+            width: 12px
+            height: 12px
+            top: 50%
+            left: 50%
+            transform: translateX(-45%) translateY(-50%)
     .title
         margin-left: 148px
         margin-top: -20px
@@ -21,43 +58,7 @@
         margin-left: 148px
         margin-top: 40px
         z-index: 10
-        .slick-prev
-            z-index: 12
-            position: absolute
-            bottom: 0
-            left: 587px
-            width: 43px
-            height: 43px
-            border: 2px solid #EAEAEA
-            border-radius: 100%
-            background-color: transparent
-            cursor: pointer
-            margin-right: 12px
-            svg
-                position: absolute
-                width: 12px
-                height: 12px
-                top: 50%
-                left: 50%
-                transform: translateX(-65%) translateY(-50%)
-        .slick-next
-            z-index: 12
-            position: absolute
-            bottom: 0
-            left: 647px
-            width: 43px
-            height: 43px
-            border: 2px solid #EAEAEA
-            border-radius: 100%
-            background-color: transparent
-            cursor: pointer
-            svg
-                position: absolute
-                width: 12px
-                height: 12px
-                top: 50%
-                left: 50%
-                transform: translateX(-45%) translateY(-50%)
+
     &__item
         width: 241px
         min-height: 341px
@@ -142,6 +143,8 @@
             font-size: 14px
             letter-spacing: -0.28px
             margin-top: 26px
+        &--hide
+            display: none
         &-active
             width: 555px
             min-height: 380px
