@@ -75,10 +75,12 @@ class MainSlider extends Slider {
 
     this.slides.forEach((slide: HTMLDivElement) => {
       slide.style.display = "none";
+      slide.classList.remove("faded");
     });
 
     (this.slides[this.slideIndex - 1] as HTMLDivElement).style.display =
       "block";
+    (this.slides[this.slideIndex - 1] as HTMLDivElement).classList.add("faded");
   }
 
   changeSlides(n: number) {

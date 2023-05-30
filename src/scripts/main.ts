@@ -44,4 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
     ".officer__card-item"
   );
   difference.init();
+
+  const forms = new Forms(".form");
+  forms.init();
 });
