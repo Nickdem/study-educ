@@ -5,6 +5,12 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   slider.render();
 
+  const slider2 = new MainSlider({
+    containerSelector: ".moduleapp",
+    btnsSelector: ".next",
+  });
+  slider2.render();
+
   const showUpSlider = new MiniSlider({
     containerSelector: ".showup__content-slider",
     prevSelector: ".showup__prev",
@@ -35,8 +41,11 @@ window.addEventListener("DOMContentLoaded", () => {
   });
   feedSlider.init();
 
-  const player = new VideoPlayer(".showup .play", ".overlay");
+  const player = new VideoPlayer(".play", ".overlay");
   player.init();
+
+  const player2 = new VideoPlayer(".feed__item-play", ".overlay");
+  player2.init();
 
   const difference = new Difference(
     ".officerold",
@@ -47,4 +56,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const forms = new Forms(".form");
   forms.init();
+
+  const showUp = new ShowUp(".plus");
+  showUp.init();
+
+  const downLoad = new Download(".download");
+
+  downLoad.init();
 });

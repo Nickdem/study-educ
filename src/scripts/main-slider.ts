@@ -32,7 +32,11 @@ class Slider {
     hideClass,
   }: ISliderContstructor) {
     this.container = document.querySelector(containerSelector);
-    this.slides = Array.from(this.container.children);
+    try {
+      this.slides = Array.from(this.container.children);
+    } catch (e) {
+      console.log(e);
+    }
     this.btns = document.querySelectorAll(btnsSelector);
     this.slideIndex = 1;
     this.prev = document.querySelector(prevSelector);
@@ -88,27 +92,43 @@ class MainSlider extends Slider {
   }
 
   render() {
+    if (!this.container) {
+      return;
+    }
+
     try {
-      this.hanson = document.querySelector(".hanson");
+      try {
+        this.hanson = document.querySelector(".hanson");
+      } catch (e) {
+        console.log(e);
+      }
+
+      this.btns.forEach((item) => {
+        item.addEventListener("click", () => {
+          this.changeSlides(1);
+        });
+
+        const parrentEl = item.parentNode as HTMLDivElement,
+          prevBtn = parrentEl.querySelector(".prev"),
+          logoBtn = parrentEl.previousElementSibling;
+
+        if (prevBtn) {
+          parrentEl.querySelector(".prev").addEventListener("click", () => {
+            this.changeSlides(-1);
+          });
+        }
+
+        logoBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          this.slideIndex = 1;
+          this.showSlides(this.slideIndex);
+        });
+      });
+
+      this.showSlides(this.slideIndex);
     } catch (e) {
       console.log(e);
     }
-
-    this.btns.forEach((item) => {
-      item.addEventListener("click", () => {
-        this.changeSlides(1);
-      });
-
-      (
-        item.parentNode as HTMLDivElement
-      ).previousElementSibling.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.slideIndex = 1;
-        this.showSlides(this.slideIndex);
-      });
-    });
-
-    this.showSlides(this.slideIndex);
   }
 }
 
@@ -152,6 +172,7 @@ class MiniSlider extends Slider {
 
   changeSlide(n: number) {
     if (n > this.slides.length - 1) {
+      this.slideIndex = this.slides.length;
       this.slides[this.slideIndex - 1].classList.remove(this.hideClass);
       this.decorizeSlides();
 
@@ -187,18 +208,22 @@ class MiniSlider extends Slider {
   }
 
   init() {
-    this.container.style.cssText = `
-          display: flex;
-          flex-wrap: wrap;
-          overflow: hidden;
-          align-items: flex-start;
-      `;
+    try {
+      this.container.style.cssText = `
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+      align-items: flex-start;
+  `;
 
-    this.bindTriggers();
-    this.decorizeSlides();
+      this.bindTriggers();
+      this.decorizeSlides();
 
-    if (this.autoplay) {
-      setInterval(() => this.changeSlide(+1), 5000);
+      if (this.autoplay) {
+        // setInterval(() => this.changeSlide(+1), 5000);
+      }
+    } catch (e) {
+      console.log(e);
     }
   }
 }
